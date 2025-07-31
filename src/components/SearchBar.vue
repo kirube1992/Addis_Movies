@@ -3,24 +3,24 @@ import {ref} from 'vue';
 
 const searchTerm = ref('');
 
-const emit = defineEmits(['perform-serach']);
+const emit = defineEmits(['perform-search']);
 
 
-function search() {
 
-    if(searchTerm.value !== '') {
-        emit  ('perform-serach', searchTerm.value)
-    }
+function serach() {
+  if(searchTerm.value.trim() !== ''){
+     emit('perform-search', searchTerm.value);
+  }
 }
 
 </script>
 <template>
-    <div class="search-btn">
-    <form @submit.prevent="search" class="search-bar">
-        <input type="text" class="Move-input" v-model="searchTerm"  placeholder= " Write what u want">
-        <button @click="Save-btn" class="save-btn">Save</button>
-    </form>
-    </div>
+  <div class="search-bar">
+<form @submit.prevent="serach">
+  <input type="text" v-model="searchTerm" placeholder="write movie title ...."/>
+  <button>Save</button>
+</form>
+</div>
 </template>
 <style scoped>
 
