@@ -18,7 +18,7 @@ function serach() {
   <div class="search-bar">
 <form @submit.prevent="serach">
   <input type="text" v-model="searchTerm" placeholder="write movie title ...."/>
-  <button>Save</button>
+  <button>Search</button>
 </form>
 </div>
 </template>

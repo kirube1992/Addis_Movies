@@ -5,7 +5,7 @@ import {ref} from 'vue';
 
 
 defineProps({
-    Movies: {
+    movies: {
         type: Array,
         required: true
     }
@@ -30,7 +30,7 @@ defineProps({
 <style scoped>
 .movie-list {
   display: flex;
-  flex-wrap: wrap; /* Allows items to wrap onto the next line */
+  flex-wrap: wrap; 
   justify-content: center;
   gap: 20px;
   padding: 20px;
