@@ -4,10 +4,37 @@ import { ref } from 'vue';
 import SearchBar from './components/SearchBar.vue';
 
 const activeSearchTerm = ref('');
+const isLoading = ref(false);
+const error  = ref(null);
+const movie = ref([]);
 
-function handleSearch(term) {
+
+const apiKey = '2e3c68f2';
+
+async function handleSearch(term) {
   console.log('App.vue, recived ', term);
   activeSearchTerm.value = term;
+
+
+  try {
+     const apiUrl = `https://www.omdbapi.com/?apikey=${apiKey}&s=${term}`;
+    const Response = await fetch(apiUrl);
+    const data =  await Response.json();
+
+    if(data.Response === true) {
+      movie.value = data.Search
+    } else {
+      error.value = data.Error;
+    }
+
+  }catch(err) {
+     console.error("An error occurred during fetch:", err);
+    error.value = 'An unexpected error occurred. Please try again.';
+  } finally{
+    isLoading = false;
+  }
+
+
 }
 </script>
 
